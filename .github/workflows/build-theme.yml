@@ -1,0 +1,97 @@
+name: Keyboard Theme Builder
+
+on:
+  workflow_dispatch:
+    inputs:
+      theme_name:
+        description: 'Name of the theme to build'
+        required: true
+        type: string
+        pattern: '^[a-zA-Z0-9_-]{3,50}$'
+
+env:
+  THEME_NAME: ${{ inputs.theme_name }}
+  BUILD_DIR: ${{ github.workspace }}/build
+  THEME_DIR: ${{ github.workspace }}/theme
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      theme_exists: ${{ steps.check-theme.outputs.exists }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Check if theme exists
+        id: check-theme
+        run: |
+          RESPONSE=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/${{ github.repository }}/contents/themes/${THEME_NAME}.zip")
+          
+          if [[ "$RESPONSE" != *"Not Found"* ]]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
+  build:
+    needs: setup
+    if: needs.setup.outputs.theme_exists == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Download theme resources
+        run: |
+          mkdir -p $THEME_DIR/res/drawable
+          echo "Downloading theme: $THEME_NAME"
+          curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -L "https://api.github.com/repos/${{ github.repository }}/contents/themes/${THEME_NAME}.zip?raw=true" \
+            -o theme.zip
+          unzip theme.zip -d $THEME_DIR
+
+      - name: Build APK
+        run: |
+          ./gradlew assembleDebug \
+            -PthemeName="$THEME_NAME" \
+            -PversionCode=${{ github.run_number }} \
+            -PversionName="1.0.${{ github.run_number }}"
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ inputs.theme_name }}-theme
+          path: app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 3
+
+      - name: Cleanup
+        run: |
+          rm -rf theme.zip $THEME_DIR
+
+  notify:
+    needs: [setup, build]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Notify on failure
+        if: failure() && needs.setup.outputs.theme_exists == 'true'
+        run: |
+          echo "Build failed for theme $THEME_NAME" > message.txt
+          # Add your notification logic here (Slack, email, etc.)
+
+      - name: Notify theme not found
+        if: needs.setup.outputs.theme_exists == 'false'
+        run: |
+          echo "Theme $THEME_NAME not found in repository" > message.txt
+          # Add your notification logic here
