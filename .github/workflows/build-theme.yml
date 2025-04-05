@@ -8,7 +8,11 @@ on:
         required: true
         type: string
         pattern: '^[a-zA-Z0-9_-]{3,50}$'
-
+        
+permissions:
+  contents: write  # Needed to upload releases
+  actions: write   # Needed to trigger workflows
+  
 env:
   THEME_NAME: ${{ inputs.theme_name }}
   BUILD_DIR: ${{ github.workspace }}/build
