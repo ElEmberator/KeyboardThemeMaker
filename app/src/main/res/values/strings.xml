@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">bebo Keyboard</string>
-    <string name="keyboard_app_name">bebo</string>
+    <string name="app_name">Memo Keyboard</string>
+    <string name="keyboard_app_name">Memo</string>
     <string name="creator_name">Anonymous</string>
 </resources>
