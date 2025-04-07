@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="key_color">#808080</color>
+    <color name="key_text_color">#000000</color>
+    <color name="key_stroke_color">#000000</color>
+    <color name="key_shadow_color">#000000</color>
+    <color name="keyboard_color">#808080</color>
+</resources>
