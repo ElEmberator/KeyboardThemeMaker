@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.keyboard.theme.fefe"
+    package="com.keyboard.theme.zozo"
     android:versionCode="1"
     android:versionName="1.0">
 
@@ -25,7 +25,7 @@
         
         <service
             android:name=".KeyboardService"
-            android:label="fefe Keyboard"
+            android:label="zozo Keyboard"
             android:permission="android.permission.BIND_INPUT_METHOD"
             android:exported="true">
             <intent-filter>
