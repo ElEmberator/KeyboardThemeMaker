@@ -4,6 +4,15 @@ on:
   push:
     branches: [ main ]
   workflow_dispatch:  # Manual trigger
+    inputs:
+      theme_name:
+        description: 'Name of the keyboard theme'
+        required: true
+        default: 'Custom Theme'
+      creator:
+        description: 'Creator of the theme'
+        required: false
+        default: 'Anonymous'
 
 jobs:
   build:
@@ -60,7 +69,7 @@ jobs:
         
     - name: Generate APK metadata
       run: |
-        echo "APK_NAME=Memo-$(date +'%Y%m%d')" >> $GITHUB_ENV
+        echo "APK_NAME=${{ inputs.theme_name || 'fefe' }}-$(date +'%Y%m%d')" >> $GITHUB_ENV
         echo "BUILD_DATE=$(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_ENV
         
     - name: Create Release
@@ -70,9 +79,9 @@ jobs:
         tag_name: v${{ github.run_number }}
         files: ${{ steps.sign_app.outputs.signedReleaseFile }}
         body: |
-          # Memo Keyboard Theme
+          # ${{ inputs.theme_name || 'fefe' }} Keyboard Theme
           
-          Created by: Anonymous
+          Created by: ${{ inputs.creator || 'Anonymous' }}
           Build Date: ${{ env.BUILD_DATE }}
           
           ## Installation
