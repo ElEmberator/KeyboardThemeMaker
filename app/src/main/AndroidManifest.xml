@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.keyboard.theme.zozo"
+    package="com.keyboard.theme.nono"
     android:versionCode="1"
     android:versionName="1.0">
-
+    
     <uses-sdk
         android:minSdkVersion="21"
         android:targetSdkVersion="33" />
-
+    
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -25,7 +25,7 @@
         
         <service
             android:name=".KeyboardService"
-            android:label="zozo Keyboard"
+            android:label="nono Keyboard"
             android:permission="android.permission.BIND_INPUT_METHOD"
             android:exported="true">
             <intent-filter>
