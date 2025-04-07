@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public type="drawable" name="btn_keyboard_key" id="0x7f020000" />
+    <public type="drawable" name="btn_keyboard_key_alt" id="0x7f020001" />
+    <public type="drawable" name="btn_keyboard_key_alt_normal" id="0x7f020002" />
+    <public type="drawable" name="btn_keyboard_key_alt_normal_off" id="0x7f020003" />
+    <public type="drawable" name="btn_keyboard_key_alt_normal_on" id="0x7f020004" />
+    <public type="drawable" name="btn_keyboard_key_alt_pressed" id="0x7f020005" />
+    <public type="drawable" name="btn_keyboard_key_alt_pressed_off" id="0x7f020006" />
+    <public type="drawable" name="btn_keyboard_key_alt_pressed_on" id="0x7f020007" />
+    <public type="drawable" name="btn_keyboard_key_normal" id="0x7f020008" />
+    <public type="drawable" name="btn_keyboard_key_normal_off" id="0x7f020009" />
+    <public type="drawable" name="btn_keyboard_key_normal_on" id="0x7f02000a" />
+    <public type="drawable" name="btn_keyboard_key_pressed" id="0x7f02000b" />
+    <public type="drawable" name="btn_keyboard_key_pressed_off" id="0x7f02000c" />
+    <public type="drawable" name="btn_keyboard_key_pressed_on" id="0x7f02000d" />
+    <public type="drawable" name="icon" id="0x7f02000e" />
+    <public type="drawable" name="keyboard_background" id="0x7f02000f" />
+    <public type="drawable" name="keyboard_key_feedback" id="0x7f020010" />
+    <public type="drawable" name="keyboard_key_feedback_background" id="0x7f020011" />
+    <public type="drawable" name="keyboard_key_feedback_more_background" id="0x7f020012" />
+</resources>
