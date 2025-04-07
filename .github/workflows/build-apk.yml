@@ -69,7 +69,7 @@ jobs:
         
     - name: Generate APK metadata
       run: |
-        echo "APK_NAME=${{ inputs.theme_name || 'fefe' }}-$(date +'%Y%m%d')" >> $GITHUB_ENV
+        echo "APK_NAME=${{ inputs.theme_name || 'zozo' }}-$(date +'%Y%m%d')" >> $GITHUB_ENV
         echo "BUILD_DATE=$(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_ENV
         
     - name: Create Release
@@ -79,7 +79,7 @@ jobs:
         tag_name: v${{ github.run_number }}
         files: ${{ steps.sign_app.outputs.signedReleaseFile }}
         body: |
-          # ${{ inputs.theme_name || 'fefe' }} Keyboard Theme
+          # ${{ inputs.theme_name || 'zozo' }} Keyboard Theme
           
           Created by: ${{ inputs.creator || 'Anonymous' }}
           Build Date: ${{ env.BUILD_DATE }}
