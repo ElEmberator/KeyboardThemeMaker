@@ -5,4 +5,12 @@
         <item name="android:colorPrimaryDark">@color/key_stroke_color</item>
         <item name="android:colorAccent">@color/key_text_color</item>
     </style>
+    
+    <style name="KeyboardTheme">
+        <item name="android:keyBackground">@drawable/key_normal</item>
+        <item name="android:keyTextColor">@color/key_text_color</item>
+        <item name="android:keyTextSize">18sp</item>
+        <item name="android:keyPreviewLayout">@null</item>
+        <item name="android:keyboardBackground">@drawable/keyboard_background</item>
+    </style>
 </resources>
