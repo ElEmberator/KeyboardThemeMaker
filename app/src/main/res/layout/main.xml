@@ -8,40 +8,40 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="zozo Keyboard Theme"
+        android:text="nono Keyboard Theme"
         android:textSize="24sp"
         android:gravity="center"
         android:layout_marginBottom="16dp" />
-        
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="To use this keyboard theme:"
         android:textSize="18sp"
         android:layout_marginBottom="8dp" />
-        
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="1. Open Settings > System > Languages &amp; input > Virtual keyboard"
         android:layout_marginBottom="4dp" />
-        
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="2. Enable this keyboard"
         android:layout_marginBottom="4dp" />
-        
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="3. Select this keyboard as your input method"
         android:layout_marginBottom="16dp" />
-        
+
     <Button
         android:id="@+id/settings_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Open Keyboard Settings" />
-        
+
 </LinearLayout>
