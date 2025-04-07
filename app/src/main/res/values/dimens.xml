@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="key_height">48dp</dimen>
+    <dimen name="key_width">32dp</dimen>
+    <dimen name="key_padding">4dp</dimen>
+    <dimen name="key_text_size">16sp</dimen>
+</resources>
